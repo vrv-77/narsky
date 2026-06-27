@@ -44,19 +44,19 @@ const defaultStoreSettings: StoreSettingsSnapshot = {
 };
 
 const defaultThemeSettings: ThemeSettingsSnapshot = {
-  primaryColor: "#be5b2c",
-  secondaryColor: "#194b47",
-  accentColor: "#e7b84f",
-  backgroundColor: "#f7f2ea",
-  surfaceColor: "#fffdf9",
-  textColor: "#1f2937",
-  mutedTextColor: "#6b7280",
-  buttonTextColor: "#fffaf5",
+  primaryColor: "#ff4fd8",
+  secondaryColor: "#34d7ff",
+  accentColor: "#8b5cf6",
+  backgroundColor: "#060816",
+  surfaceColor: "#0d1330",
+  textColor: "#f8f7ff",
+  mutedTextColor: "#a8b4d9",
+  buttonTextColor: "#ffffff",
   borderRadius: "1.25rem",
   contentMaxWidth: "1200px",
   headingFont: "var(--font-source-serif), serif",
   bodyFont: "var(--font-manrope), sans-serif",
-  mode: "light",
+  mode: "dark",
 };
 
 const demoCategories: CategoryCard[] = [

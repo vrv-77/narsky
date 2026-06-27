@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   title: "Narsky | Figuras y arte artesanal",
   description:
     "Tienda de figuras, piezas decorativas y articulos artesanales inspirados en universos anime, gamer y coleccionables.",
+  icons: {
+    icon: "/narsky-icon.svg",
+    shortcut: "/narsky-icon.svg",
+    apple: "/narsky-icon.svg",
+  },
 };
 
 export default function RootLayout({

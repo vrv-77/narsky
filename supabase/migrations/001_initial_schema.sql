@@ -66,6 +66,23 @@ begin
 end;
 $$;
 
+create table public.profiles (
+  id uuid primary key references auth.users (id) on delete cascade,
+  email text unique,
+  full_name text,
+  phone text,
+  created_at timestamptz not null default timezone('utc', now()),
+  updated_at timestamptz not null default timezone('utc', now())
+);
+
+create table public.admin_roles (
+  user_id uuid primary key references auth.users (id) on delete cascade,
+  role public.admin_role not null default 'editor',
+  is_active boolean not null default true,
+  created_at timestamptz not null default timezone('utc', now()),
+  updated_at timestamptz not null default timezone('utc', now())
+);
+
 create or replace function app.is_admin()
 returns boolean
 language sql
@@ -114,23 +131,6 @@ begin
   return new;
 end;
 $$;
-
-create table public.profiles (
-  id uuid primary key references auth.users (id) on delete cascade,
-  email text unique,
-  full_name text,
-  phone text,
-  created_at timestamptz not null default timezone('utc', now()),
-  updated_at timestamptz not null default timezone('utc', now())
-);
-
-create table public.admin_roles (
-  user_id uuid primary key references auth.users (id) on delete cascade,
-  role public.admin_role not null default 'editor',
-  is_active boolean not null default true,
-  created_at timestamptz not null default timezone('utc', now()),
-  updated_at timestamptz not null default timezone('utc', now())
-);
 
 create table public.categories (
   id uuid primary key default gen_random_uuid(),

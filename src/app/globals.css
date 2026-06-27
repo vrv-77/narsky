@@ -1,17 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f2ea;
-  --surface: #fffdf9;
-  --foreground: #1f2937;
-  --muted: #6b7280;
-  --border: rgba(31, 41, 55, 0.12);
-  --primary: #be5b2c;
-  --primary-contrast: #fffaf5;
-  --secondary: #194b47;
-  --accent: #e7b84f;
+  --background: #060816;
+  --surface: #0d1330;
+  --foreground: #f8f7ff;
+  --muted: #a8b4d9;
+  --border: rgba(144, 164, 255, 0.18);
+  --primary: #ff4fd8;
+  --primary-contrast: #ffffff;
+  --secondary: #34d7ff;
+  --accent: #8b5cf6;
   --radius: 1.25rem;
-  --shadow-soft: 0 24px 60px rgba(27, 36, 49, 0.08);
+  --shadow-soft:
+    0 22px 60px rgba(3, 6, 24, 0.48),
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 34px rgba(139, 92, 246, 0.12);
   --content-max-width: 1200px;
 }
 
@@ -35,13 +38,17 @@
 
 html {
   background:
-    radial-gradient(circle at top left, rgba(231, 184, 79, 0.2), transparent 32%),
-    radial-gradient(circle at top right, rgba(25, 75, 71, 0.12), transparent 30%),
+    radial-gradient(circle at top left, rgba(255, 79, 216, 0.2), transparent 28%),
+    radial-gradient(circle at top right, rgba(52, 215, 255, 0.14), transparent 24%),
+    radial-gradient(circle at center, rgba(139, 92, 246, 0.14), transparent 30%),
     var(--background);
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 79, 216, 0.14), transparent 22%),
+    radial-gradient(circle at 80% 10%, rgba(52, 215, 255, 0.12), transparent 24%),
+    linear-gradient(180deg, #090b1a 0%, #050814 100%);
   color: var(--foreground);
   font-family: var(--font-manrope), sans-serif;
 }
@@ -61,14 +68,49 @@ textarea {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 50%, white);
-  color: var(--secondary);
+  background: color-mix(in srgb, var(--primary) 52%, black);
+  color: white;
 }
 
 .surface-panel {
-  background: color-mix(in srgb, var(--surface) 92%, white);
+  background:
+    linear-gradient(180deg, rgba(19, 28, 67, 0.92) 0%, rgba(10, 16, 42, 0.96) 100%);
   backdrop-filter: blur(14px);
   box-shadow: var(--shadow-soft);
+}
+
+.neon-panel {
+  background:
+    linear-gradient(180deg, rgba(18, 24, 58, 0.9) 0%, rgba(9, 13, 34, 0.96) 100%);
+  border: 1px solid rgba(125, 147, 255, 0.18);
+  box-shadow:
+    0 24px 60px rgba(3, 6, 24, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 24px rgba(255, 79, 216, 0.08);
+}
+
+.neon-outline {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 28px rgba(52, 215, 255, 0.1);
+}
+
+.neon-chip {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fdf2ff;
+}
+
+.narsky-wordmark {
+  background: linear-gradient(90deg, #ff6ae0 0%, #c06dff 46%, #35d8ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: var(--font-source-serif), serif;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 18px rgba(255, 79, 216, 0.18);
 }
 
 .app-shell {

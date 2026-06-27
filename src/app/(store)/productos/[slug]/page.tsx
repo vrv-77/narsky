@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import { AddToCartButton } from "@/components/store/add-to-cart-button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { formatClp } from "@/lib/utils";
@@ -29,6 +30,14 @@ export default async function ProductDetailPage({
     null;
   const hasDiscount =
     product.compare_at_price && Number(product.compare_at_price) > Number(product.price);
+  const productForCart = {
+    id: product.id?.toString() ?? "",
+    slug,
+    name: product.name?.toString() ?? "Producto",
+    price: Number(product.price ?? 0),
+    primaryImage,
+    stock: Number(product.stock ?? 0),
+  };
 
   return (
     <div className="app-shell py-10">
@@ -78,6 +87,10 @@ export default async function ProductDetailPage({
                 {formatClp(Number(product.compare_at_price))}
               </p>
             ) : null}
+          </div>
+
+          <div className="mt-6">
+            <AddToCartButton className="w-full sm:w-auto" product={productForCart} />
           </div>
 
           <div className="mt-8 rounded-[calc(var(--radius)-0.2rem)] border border-black/6 bg-white/70 p-5">

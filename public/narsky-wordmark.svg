@@ -1,0 +1,33 @@
+<svg width="820" height="240" viewBox="0 0 820 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wordmarkGradient" x1="34" y1="42" x2="744" y2="183" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF6CE3"/>
+      <stop offset="0.45" stop-color="#B66BFF"/>
+      <stop offset="0.78" stop-color="#4CC3FF"/>
+      <stop offset="1" stop-color="#35D8FF"/>
+    </linearGradient>
+    <filter id="wordmarkGlow" x="0" y="0" width="820" height="240" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="820" height="240" rx="44" fill="#090B1D"/>
+  <g filter="url(#wordmarkGlow)">
+    <text
+      x="30"
+      y="172"
+      fill="url(#wordmarkGradient)"
+      font-family="Segoe UI, Arial, sans-serif"
+      font-size="168"
+      font-style="italic"
+      font-weight="900"
+      letter-spacing="1.2"
+    >
+      Narsky
+    </text>
+    <path d="M770 116L778 136L798 144L778 152L770 172L762 152L742 144L762 136L770 116Z" fill="#DFFAFF"/>
+  </g>
+</svg>

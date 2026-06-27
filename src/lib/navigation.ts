@@ -2,8 +2,6 @@ export const storeNavigation = [
   { href: "/", label: "Inicio" },
   { href: "/productos", label: "Productos" },
   { href: "/contacto", label: "Contacto" },
-  { href: "/terminos", label: "Términos" },
-  { href: "/privacidad", label: "Privacidad" },
 ];
 
 export const adminNavigation = [
