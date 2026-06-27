@@ -1,0 +1,28 @@
+"use client";
+
+import { createBrowserClient } from "@supabase/ssr";
+
+import { getPublicEnv } from "@/lib/env";
+
+let browserClient: ReturnType<typeof createBrowserClient> | null = null;
+
+export function createSupabaseBrowserClient() {
+  if (browserClient) {
+    return browserClient;
+  }
+
+  const env = getPublicEnv();
+
+  if (!env.NEXT_PUBLIC_SUPABASE_URL || !env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    throw new Error(
+      "Faltan NEXT_PUBLIC_SUPABASE_URL o NEXT_PUBLIC_SUPABASE_ANON_KEY.",
+    );
+  }
+
+  browserClient = createBrowserClient(
+    env.NEXT_PUBLIC_SUPABASE_URL,
+    env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  );
+
+  return browserClient;
+}

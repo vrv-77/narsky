@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f2ea;
+  --surface: #fffdf9;
+  --foreground: #1f2937;
+  --muted: #6b7280;
+  --border: rgba(31, 41, 55, 0.12);
+  --primary: #be5b2c;
+  --primary-contrast: #fffaf5;
+  --secondary: #194b47;
+  --accent: #e7b84f;
+  --radius: 1.25rem;
+  --shadow-soft: 0 24px 60px rgba(27, 36, 49, 0.08);
+  --content-max-width: 1200px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-contrast: var(--primary-contrast);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-source-serif);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  background:
+    radial-gradient(circle at top left, rgba(231, 184, 79, 0.2), transparent 32%),
+    radial-gradient(circle at top right, rgba(25, 75, 71, 0.12), transparent 30%),
+    var(--background);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 50%, white);
+  color: var(--secondary);
+}
+
+.surface-panel {
+  background: color-mix(in srgb, var(--surface) 92%, white);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-soft);
+}
+
+.app-shell {
+  width: min(100% - 2rem, var(--content-max-width));
+  margin-inline: auto;
+}
+
+.admin-grid {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 280px minmax(0, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+}

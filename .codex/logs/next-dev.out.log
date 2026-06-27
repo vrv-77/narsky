@@ -1,0 +1,78 @@
+
+> negocio-nicole@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.100.55:3000
+✓ Ready in 1803ms
+Creating turbopack project {
+  dir: 'C:\\Users\\Victor\\OneDrive\\Desktop\\Negocio_Nicole',
+  testMode: true
+}
+- Experiments (use with caution):
+  · serverActions
+
+○ Compiling / ...
+ GET / 200 in 10.6s (next.js: 9.4s, application-code: 1248ms)
+ GET / 200 in 316ms (next.js: 20ms, application-code: 296ms)
+ GET /productos 200 in 1359ms (next.js: 1277ms, application-code: 83ms)
+ GET /contacto 200 in 1217ms (next.js: 1117ms, application-code: 100ms)
+ GET /terminos 200 in 1279ms (next.js: 1204ms, application-code: 75ms)
+ GET /privacidad 200 in 1066ms (next.js: 986ms, application-code: 80ms)
+ GET /terminos 200 in 170ms (next.js: 23ms, application-code: 147ms)
+ GET /privacidad 200 in 117ms (next.js: 11ms, application-code: 106ms)
+ GET / 200 in 129ms (next.js: 14ms, application-code: 115ms)
+ GET /admin/login 200 in 1982ms (next.js: 1591ms, proxy.ts: 284ms, application-code: 107ms)
+✓ Compiled in 1871ms
+ GET / 200 in 2.5s (next.js: 842ms, application-code: 1667ms)
+ GET / 200 in 1119ms (next.js: 10ms, application-code: 1108ms)
+ GET / 200 in 1115ms (next.js: 188ms, application-code: 927ms)
+ GET / 200 in 1303ms (next.js: 17ms, application-code: 1286ms)
+ GET / 200 in 1303ms (next.js: 398ms, application-code: 905ms)
+ GET / 200 in 1173ms (next.js: 22ms, application-code: 1150ms)
+ GET / 200 in 1078ms (next.js: 21ms, application-code: 1058ms)
+ GET / 200 in 915ms (next.js: 15ms, application-code: 900ms)
+ GET / 200 in 864ms (next.js: 187ms, application-code: 677ms)
+ GET / 200 in 866ms (next.js: 40ms, application-code: 826ms)
+ GET / 200 in 843ms (next.js: 332ms, application-code: 512ms)
+ GET / 200 in 378ms (next.js: 13ms, application-code: 365ms)
+ GET / 200 in 210ms (next.js: 17ms, application-code: 193ms)
+✓ Compiled in 261ms
+ GET / 200 in 1785ms (next.js: 534ms, application-code: 1251ms)
+ GET / 200 in 1105ms (next.js: 16ms, application-code: 1089ms)
+ GET / 200 in 783ms (next.js: 33ms, application-code: 751ms)
+ GET / 200 in 784ms (next.js: 185ms, application-code: 598ms)
+ GET / 200 in 770ms (next.js: 431ms, application-code: 339ms)
+ GET / 200 in 787ms (next.js: 310ms, application-code: 477ms)
+ GET / 200 in 366ms (next.js: 13ms, application-code: 353ms)
+ GET / 200 in 214ms (next.js: 23ms, application-code: 191ms)
+ GET / 200 in 1236ms (next.js: 12ms, application-code: 1224ms)
+ GET /carrito 200 in 2.4s (next.js: 2.3s, application-code: 78ms)
+✓ Compiled in 429ms
+ GET /carrito 200 in 601ms (next.js: 393ms, application-code: 208ms)
+ GET /carrito 200 in 656ms (next.js: 16ms, application-code: 640ms)
+ GET /carrito 200 in 611ms (next.js: 12ms, application-code: 600ms)
+ GET /carrito 200 in 504ms (next.js: 16ms, application-code: 488ms)
+ GET /carrito 200 in 505ms (next.js: 97ms, application-code: 408ms)
+ GET /carrito 200 in 509ms (next.js: 189ms, application-code: 321ms)
+ GET /carrito 200 in 511ms (next.js: 275ms, application-code: 236ms)
+ GET /carrito 200 in 620ms (next.js: 9ms, application-code: 611ms)
+ GET /carrito 200 in 523ms (next.js: 25ms, application-code: 497ms)
+ GET /carrito 200 in 410ms (next.js: 20ms, application-code: 390ms)
+ GET /carrito 200 in 411ms (next.js: 111ms, application-code: 300ms)
+ GET /carrito 200 in 407ms (next.js: 286ms, application-code: 121ms)
+ GET /carrito 200 in 413ms (next.js: 196ms, application-code: 217ms)
+✓ Compiled in 647ms
+ GET /carrito 200 in 1339ms (next.js: 410ms, application-code: 929ms)
+ GET /carrito 200 in 680ms (next.js: 11ms, application-code: 668ms)
+ GET /carrito 200 in 571ms (next.js: 14ms, application-code: 557ms)
+ GET /carrito 200 in 574ms (next.js: 107ms, application-code: 466ms)
+ GET /carrito 200 in 574ms (next.js: 198ms, application-code: 376ms)
+ GET /carrito 200 in 294ms (next.js: 11ms, application-code: 284ms)
+ GET /carrito 200 in 136ms (next.js: 10ms, application-code: 126ms)
+✓ Compiled in 246ms
+ GET /carrito 200 in 2.1s (next.js: 853ms, application-code: 1254ms)
+ GET /carrito 200 in 859ms (next.js: 18ms, application-code: 840ms)
+ GET /carrito 200 in 1063ms (next.js: 178ms, application-code: 884ms)
+ GET / 200 in 1536ms (next.js: 685ms, application-code: 851ms)
