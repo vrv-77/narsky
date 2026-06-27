@@ -100,71 +100,72 @@ export default async function StoreHomePage() {
     <div className="space-y-10 py-8 lg:space-y-12 lg:py-10">
       <section className="app-shell">
         <Card className="neon-panel neon-outline overflow-hidden rounded-[2rem] border border-white/10 p-5 lg:p-6">
-          <div className="grid gap-5 xl:grid-cols-[0.86fr_1.34fr]">
-            <div className="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(16,19,52,0.98)_0%,rgba(11,14,37,0.98)_100%)] p-6 lg:p-8">
-              <div className="flex h-full flex-col justify-center">
-                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[var(--secondary)]">
-                  Tienda anime y gamer
-                </p>
-                <h1 className="mt-4 text-5xl font-black uppercase leading-[0.88] tracking-tight text-white lg:text-[5rem]">
-                  Descubre
-                  <span className="block bg-[linear-gradient(90deg,#ff65df_0%,#c472ff_42%,#38d8ff_100%)] bg-clip-text text-transparent">
-                    tu estilo
-                  </span>
-                  <span className="block bg-[linear-gradient(90deg,#ff65df_0%,#c472ff_42%,#38d8ff_100%)] bg-clip-text text-transparent">
-                    anime
-                  </span>
-                </h1>
-                <p className="mt-5 max-w-xl text-base leading-8 text-[rgba(240,243,255,0.82)]">
-                  Figuras, accesorios, decoración y regalos con vibra neón para
-                  fans del anime, el gaming y la cultura kawaii.
-                </p>
-
-                <div className="mt-7 flex flex-wrap gap-4">
-                  <Link
-                    href="/productos"
-                    className="inline-flex items-center justify-center rounded-full bg-[linear-gradient(90deg,var(--primary),#ff84e7)] px-6 py-3 text-sm font-semibold text-white shadow-[0_0_26px_rgba(255,79,216,0.35)]"
-                  >
-                    Comprar colección
-                  </Link>
-                  <Link
-                    href="/productos"
-                    className="inline-flex items-center justify-center rounded-full border border-white/12 bg-white/8 px-6 py-3 text-sm font-semibold text-[var(--foreground)]"
-                  >
-                    Ver ofertas
-                  </Link>
-                </div>
-
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <div className="neon-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em]">
-                    <ShieldCheck className="size-4 text-[var(--secondary)]" />
-                    Compra segura
-                  </div>
-                  <div className="neon-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em]">
-                    <Truck className="size-4 text-[var(--secondary)]" />
-                    Envíos flexibles
-                  </div>
-                  <div className="neon-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em]">
-                    <Sparkles className="size-4 text-[var(--secondary)]" />
-                    Estilo fan-made
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative aspect-[735/423] overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#090d24]">
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10">
+            <div className="relative aspect-[1536/864] min-h-[540px] lg:min-h-[620px]">
               <Image
-                src="/hero-anime-bolsas-v2.png"
+                src="/hero-anime-narsky-home.png"
                 alt="Chica anime con bolsas Narsky en una ciudad neón"
                 fill
                 priority
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,10,31,0.06)_0%,rgba(7,10,31,0.16)_100%)]" />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,10,29,0.86)_0%,rgba(8,10,29,0.7)_24%,rgba(8,10,29,0.18)_50%,rgba(8,10,29,0.12)_100%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,79,216,0.14),transparent_22%),radial-gradient(circle_at_bottom_left,rgba(57,215,255,0.12),transparent_22%)]" />
+
+              <div className="relative z-10 flex min-h-[540px] items-start p-6 lg:min-h-[620px] lg:p-8">
+                <div className="flex max-w-[28rem] flex-col justify-start pt-5 lg:pt-8">
+                  <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[var(--secondary)]">
+                    Tienda anime y gamer
+                  </p>
+                  <h1 className="mt-4 text-5xl font-black uppercase leading-[0.88] tracking-tight text-white lg:text-[5rem]">
+                    Descubre
+                    <span className="block bg-[linear-gradient(90deg,#ff65df_0%,#c472ff_42%,#38d8ff_100%)] bg-clip-text text-transparent">
+                      tu estilo
+                    </span>
+                    <span className="block bg-[linear-gradient(90deg,#ff65df_0%,#c472ff_42%,#38d8ff_100%)] bg-clip-text text-transparent">
+                      anime
+                    </span>
+                  </h1>
+                  <p className="mt-5 max-w-xl text-base leading-8 text-[rgba(240,243,255,0.84)]">
+                    Figuras, accesorios, decoración y regalos con vibra neón para
+                    fans del anime, el gaming y la cultura kawaii.
+                  </p>
+
+                  <div className="mt-7 flex flex-wrap gap-4">
+                    <Link
+                      href="/productos"
+                      className="inline-flex items-center justify-center rounded-full bg-[linear-gradient(90deg,var(--primary),#ff84e7)] px-6 py-3 text-sm font-semibold text-white shadow-[0_0_26px_rgba(255,79,216,0.35)]"
+                    >
+                      Comprar colección
+                    </Link>
+                    <Link
+                      href="/productos"
+                      className="inline-flex items-center justify-center rounded-full border border-white/12 bg-white/8 px-6 py-3 text-sm font-semibold text-[var(--foreground)]"
+                    >
+                      Ver ofertas
+                    </Link>
+                  </div>
+
+                  <div className="mt-7 flex flex-wrap gap-3">
+                    <div className="neon-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em]">
+                      <ShieldCheck className="size-4 text-[var(--secondary)]" />
+                      Compra segura
+                    </div>
+                    <div className="neon-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em]">
+                      <Truck className="size-4 text-[var(--secondary)]" />
+                      Envíos flexibles
+                    </div>
+                    <div className="neon-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em]">
+                      <Sparkles className="size-4 text-[var(--secondary)]" />
+                      Estilo fan-made
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="-mt-10 relative z-20 px-2 lg:px-4">
+          <div className="-mt-12 relative z-20 px-2 lg:px-4">
             <div className="grid gap-4 lg:grid-cols-5">
               {quickCategories.map((category) => {
                 const Icon = category.icon;
