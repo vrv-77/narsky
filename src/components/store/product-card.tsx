@@ -17,13 +17,13 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Card className="neon-panel neon-outline flex h-full flex-col overflow-hidden rounded-[1.5rem]">
-      <div className="relative aspect-[5/4] bg-[radial-gradient(circle_at_top,rgba(255,79,216,0.28),transparent_34%),linear-gradient(180deg,rgba(40,23,92,0.82),rgba(8,18,43,0.96))]">
+      <div className="relative aspect-[4/3] bg-[radial-gradient(circle_at_top,rgba(255,79,216,0.28),transparent_34%),linear-gradient(180deg,rgba(40,23,92,0.82),rgba(8,18,43,0.96))] sm:aspect-[5/4]">
         {product.primaryImage ? (
           <Image
             src={product.primaryImage}
             alt={product.name}
             fill
-            className="object-cover"
+            className="object-cover object-center"
           />
         ) : (
           <div className="flex h-full items-center justify-center text-sm text-[var(--muted)]">
@@ -31,7 +31,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         )}
       </div>
-      <div className="flex flex-1 flex-col p-5">
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
         <div className="flex flex-wrap gap-2">
           {product.isNew ? <Badge>Nuevo</Badge> : null}
           {hasDiscount ? <Badge className="bg-amber-100 text-amber-900">Oferta</Badge> : null}
@@ -39,10 +39,10 @@ export function ProductCard({ product }: ProductCardProps) {
         <p className="mt-4 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
           {product.categoryName || "Sin categoría"}
         </p>
-        <h3 className="mt-2 font-serif text-2xl leading-tight text-[var(--foreground)]">
+        <h3 className="mt-2 font-serif text-[1.75rem] leading-tight text-[var(--foreground)] sm:text-2xl">
           {product.name}
         </h3>
-        <div className="mt-auto pt-5">
+        <div className="mt-auto pt-4">
           <div className="flex items-end gap-3">
             <p className="text-lg font-semibold text-[var(--foreground)]">
               {formatClp(product.price)}
@@ -60,7 +60,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <AddToCartButton className="flex-1" product={product} />
             <Link
               href={`/productos/${product.slug}`}
-              className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/6 px-4 py-3 text-sm font-semibold text-[var(--foreground)]"
+              className="inline-flex min-w-[4.5rem] items-center justify-center rounded-full border border-white/10 bg-white/6 px-4 py-3 text-sm font-semibold text-[var(--foreground)]"
             >
               Ver
             </Link>

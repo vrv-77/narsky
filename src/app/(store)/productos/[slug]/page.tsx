@@ -29,7 +29,8 @@ export default async function ProductDetailPage({
     images[0]?.image_url?.toString() ??
     null;
   const hasDiscount =
-    product.compare_at_price && Number(product.compare_at_price) > Number(product.price);
+    product.compare_at_price &&
+    Number(product.compare_at_price) > Number(product.price);
   const productForCart = {
     id: product.id?.toString() ?? "",
     slug,
@@ -73,7 +74,7 @@ export default async function ProductDetailPage({
           <p className="mt-4 text-sm uppercase tracking-[0.18em] text-[var(--muted)]">
             SKU {product.sku?.toString() || "Sin SKU"}
           </p>
-          <p className="mt-6 text-base leading-8 text-[var(--muted)]">
+          <p className="mt-6 text-base leading-8 text-[rgba(240,243,255,0.82)]">
             {product.short_description?.toString() ||
               "Este producto aún no tiene descripción corta publicada."}
           </p>
@@ -93,9 +94,9 @@ export default async function ProductDetailPage({
             <AddToCartButton className="w-full sm:w-auto" product={productForCart} />
           </div>
 
-          <div className="mt-8 rounded-[calc(var(--radius)-0.2rem)] border border-black/6 bg-white/70 p-5">
-            <p className="text-sm font-semibold text-[var(--foreground)]">Descripción</p>
-            <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+          <div className="mt-8 rounded-[calc(var(--radius)-0.2rem)] border border-white/10 bg-[rgba(21,28,62,0.96)] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+            <p className="text-sm font-semibold text-white">Descripción</p>
+            <p className="mt-3 text-sm leading-7 text-[rgba(240,243,255,0.82)]">
               {product.description?.toString() ||
                 "No hay descripción detallada publicada todavía."}
             </p>

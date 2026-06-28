@@ -26,7 +26,7 @@ export default async function StoreHomePage() {
     ).values(),
   );
 
-  const spotlightProducts = allShowcaseProducts.slice(0, 8);
+  const spotlightProducts = allShowcaseProducts.slice(0, 9);
   const trendProducts = allShowcaseProducts.slice(0, 3);
 
   const maxDiscount = offerProducts.reduce((highestDiscount, product) => {
@@ -138,8 +138,8 @@ export default async function StoreHomePage() {
             </div>
           </div>
 
-          <div className="-mt-16 relative z-20 px-2 lg:-mt-20 lg:px-4">
-            <div className="grid gap-4 lg:grid-cols-5">
+          <div className="-mt-10 relative z-20 px-1 sm:-mt-12 lg:-mt-20 lg:px-4">
+            <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 sm:gap-3 lg:grid-cols-5 lg:gap-4">
               {quickCategories.map((category) => {
                 return (
                   <Link
@@ -147,7 +147,7 @@ export default async function StoreHomePage() {
                     href={category.href}
                     aria-label={category.name}
                     title={category.name}
-                    className="group flex items-center justify-center rounded-[1.75rem] px-1 py-1"
+                    className="group flex items-center justify-center rounded-[1.75rem] px-0 py-0 sm:px-1 sm:py-1"
                   >
                     <Image
                       src={category.image}
@@ -155,7 +155,7 @@ export default async function StoreHomePage() {
                       width={520}
                       height={520}
                       unoptimized
-                      className="h-[22rem] w-auto object-contain drop-shadow-[0_0_18px_rgba(24,28,68,0.25)] transition duration-300 ease-out group-hover:-translate-y-3 group-hover:scale-[1.1] group-hover:drop-shadow-[0_0_42px_rgba(255,79,216,0.38)] lg:h-[24rem]"
+                      className="h-40 w-auto object-contain drop-shadow-[0_0_18px_rgba(24,28,68,0.25)] transition duration-300 ease-out group-hover:-translate-y-3 group-hover:scale-[1.1] group-hover:drop-shadow-[0_0_42px_rgba(255,79,216,0.38)] sm:h-56 lg:h-[24rem]"
                     />
                   </Link>
                 );
@@ -178,7 +178,7 @@ export default async function StoreHomePage() {
                 </h2>
               </div>
 
-              <div className="grid gap-5 md:grid-cols-2 2xl:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {spotlightProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
@@ -193,7 +193,7 @@ export default async function StoreHomePage() {
                 </Link>
               </div>
 
-              <div className="grid gap-4 md:grid-cols-4">
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                 <Card className="neon-panel rounded-[1.5rem] p-4 text-center">
                   <p className="text-2xl font-black text-white">50K+</p>
                   <p className="mt-1 text-sm text-[var(--muted)]">Fans felices</p>

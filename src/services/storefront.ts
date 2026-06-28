@@ -68,60 +68,34 @@ const demoCategories: CategoryCard[] = [
       "Prendas con estética anime y gamer para destacar tu estilo.",
   },
   {
-    id: "demo-cat-figuras-anime",
-    slug: "figuras-anime",
-    name: "Figuras Anime",
+    id: "demo-cat-figuras",
+    slug: "figuras",
+    name: "Figuras",
     description:
       "Personajes con pose, color y presencia para destacar en tu repisa.",
   },
   {
-    id: "demo-cat-deco-gamer",
-    slug: "deco-gamer",
-    name: "Deco Gamer",
+    id: "demo-cat-accesorios",
+    slug: "accesorios",
+    name: "Accesorios",
     description:
-      "Detalles para escritorio y setup con vibra pixel, neon y fantasia.",
+      "Headsets, holders y piezas de setup con vibra neón.",
   },
   {
-    id: "demo-cat-artesanal-fantasia",
-    slug: "artesanal-fantasia",
-    name: "Artesanal Fantasia",
+    id: "demo-cat-decoracion",
+    slug: "decoracion",
+    name: "Decoración",
     description:
-      "Piezas decorativas con acabado manual y espiritu coleccionable.",
+      "Detalles decorativos para escritorio, repisa y espacios con identidad.",
+  },
+  {
+    id: "demo-cat-regalos",
+    slug: "regalos",
+    name: "Regalos",
+    description:
+      "Ideas listas para sorprender a fans del anime y la estética kawaii.",
   },
 ];
-
-function createDemoImage(
-  title: string,
-  backgroundFrom: string,
-  backgroundTo: string,
-  accent: string,
-) {
-  const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
-      <defs>
-        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="${backgroundFrom}" />
-          <stop offset="100%" stop-color="${backgroundTo}" />
-        </linearGradient>
-      </defs>
-      <rect width="800" height="1000" rx="48" fill="url(#bg)" />
-      <circle cx="620" cy="180" r="110" fill="${accent}" opacity="0.28" />
-      <circle cx="180" cy="820" r="140" fill="${accent}" opacity="0.18" />
-      <rect x="120" y="170" width="560" height="560" rx="44" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.4)" />
-      <text x="400" y="360" text-anchor="middle" fill="#fffaf5" font-family="Arial, sans-serif" font-size="54" font-weight="700">
-        NARSKY
-      </text>
-      <text x="400" y="470" text-anchor="middle" fill="#fffaf5" font-family="Arial, sans-serif" font-size="36">
-        ${title}
-      </text>
-      <text x="400" y="850" text-anchor="middle" fill="rgba(255,250,245,0.88)" font-family="Arial, sans-serif" font-size="28">
-        Coleccion de ejemplo
-      </text>
-    </svg>
-  `;
-
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
-}
 
 const demoProducts: DemoProduct[] = [
   {
@@ -134,19 +108,9 @@ const demoProducts: DemoProduct[] = [
     compareAtPrice: 37990,
     stock: 5,
     isNew: true,
-    isFeatured: false,
-    primaryImage: createDemoImage(
-      "Hoodie Kawaii",
-      "#ec4899",
-      "#312e81",
-      "#38bdf8",
-    ),
-    secondaryImage: createDemoImage(
-      "Hoodie Alt",
-      "#a21caf",
-      "#111827",
-      "#f9a8d4",
-    ),
+    isFeatured: true,
+    primaryImage: "/product-art/hoodie-narsky-kawaii.png",
+    secondaryImage: "/product-art/hoodie-narsky-kawaii.png",
     shortDescription:
       "Polerón demo con vibra anime, tonos neón y look urbano.",
     description:
@@ -158,29 +122,19 @@ const demoProducts: DemoProduct[] = [
     id: "demo-product-oni-blade",
     slug: "figura-oni-blade",
     name: "Figura Oni Blade",
-    categoryName: "Figuras Anime",
-    categorySlug: "figuras-anime",
+    categoryName: "Figuras",
+    categorySlug: "figuras",
     price: 24990,
     compareAtPrice: 29990,
     stock: 6,
     isNew: true,
     isFeatured: true,
-    primaryImage: createDemoImage(
-      "Oni Blade",
-      "#7c3aed",
-      "#1f1b4b",
-      "#fb7185",
-    ),
-    secondaryImage: createDemoImage(
-      "Oni Blade Alt",
-      "#312e81",
-      "#111827",
-      "#f59e0b",
-    ),
+    primaryImage: "/product-art/figura-oni-blade.png",
+    secondaryImage: "/product-art/figura-oni-blade.png",
     shortDescription:
-      "Figura de muestra inspirada en heroes oscuros y energia de batalla.",
+      "Figura de muestra inspirada en héroes oscuros y energía de batalla.",
     description:
-      "Una pieza demo con presencia dramatica, paleta intensa y energia anime para imaginar la vitrina de Narsky.",
+      "Una pieza demo con presencia dramática, paleta intensa y energía anime para imaginar la vitrina de Narsky.",
     sku: "NAR-DEMO-001",
     allowBackorder: false,
   },
@@ -188,29 +142,19 @@ const demoProducts: DemoProduct[] = [
     id: "demo-product-pixel-shrine",
     slug: "diorama-pixel-shrine",
     name: "Diorama Pixel Shrine",
-    categoryName: "Deco Gamer",
-    categorySlug: "deco-gamer",
+    categoryName: "Decoración",
+    categorySlug: "decoracion",
     price: 18990,
     compareAtPrice: null,
     stock: 4,
     isNew: true,
     isFeatured: true,
-    primaryImage: createDemoImage(
-      "Pixel Shrine",
-      "#0f766e",
-      "#082f49",
-      "#facc15",
-    ),
-    secondaryImage: createDemoImage(
-      "Pixel Shrine Alt",
-      "#164e63",
-      "#1e293b",
-      "#38bdf8",
-    ),
+    primaryImage: "/product-art/diorama-pixel-shrine.png",
+    secondaryImage: "/product-art/diorama-pixel-shrine.png",
     shortDescription:
       "Mini escenario decorativo para escritorios con aire retro gamer.",
     description:
-      "Este ejemplo mezcla atmosfera arcade, color y textura para visualizar una linea de decoracion inspirada en videojuegos.",
+      "Este ejemplo mezcla atmósfera arcade, color y textura para visualizar una línea de decoración inspirada en videojuegos.",
     sku: "NAR-DEMO-002",
     allowBackorder: false,
   },
@@ -218,29 +162,19 @@ const demoProducts: DemoProduct[] = [
     id: "demo-product-kitsune-stand",
     slug: "holder-kitsune-neon",
     name: "Holder Kitsune Neon",
-    categoryName: "Deco Gamer",
-    categorySlug: "deco-gamer",
+    categoryName: "Accesorios",
+    categorySlug: "accesorios",
     price: 15990,
     compareAtPrice: 19990,
     stock: 8,
     isNew: false,
     isFeatured: true,
-    primaryImage: createDemoImage(
-      "Kitsune Neon",
-      "#ea580c",
-      "#7c2d12",
-      "#22d3ee",
-    ),
-    secondaryImage: createDemoImage(
-      "Kitsune Neon Alt",
-      "#9a3412",
-      "#1f2937",
-      "#c084fc",
-    ),
+    primaryImage: "/product-art/holder-kitsune-neon.png",
+    secondaryImage: "/product-art/holder-kitsune-neon.png",
     shortDescription:
       "Soporte decorativo de ejemplo para headset, control o accesorios.",
     description:
-      "Una referencia de producto pensada para setups con identidad, mezclando fantasia japonesa y color neon.",
+      "Una referencia de producto pensada para setups con identidad, mezclando fantasía japonesa y color neón.",
     sku: "NAR-DEMO-003",
     allowBackorder: false,
   },
@@ -248,29 +182,19 @@ const demoProducts: DemoProduct[] = [
     id: "demo-product-slime-totem",
     slug: "totem-slime-arcano",
     name: "Totem Slime Arcano",
-    categoryName: "Artesanal Fantasia",
-    categorySlug: "artesanal-fantasia",
+    categoryName: "Decoración",
+    categorySlug: "decoracion",
     price: 13990,
     compareAtPrice: null,
     stock: 5,
     isNew: false,
     isFeatured: false,
-    primaryImage: createDemoImage(
-      "Slime Arcano",
-      "#2563eb",
-      "#172554",
-      "#34d399",
-    ),
-    secondaryImage: createDemoImage(
-      "Slime Arcano Alt",
-      "#1d4ed8",
-      "#1e3a8a",
-      "#f472b6",
-    ),
+    primaryImage: "/product-art/diorama-pixel-shrine.png",
+    secondaryImage: "/product-art/diorama-pixel-shrine.png",
     shortDescription:
-      "Pieza decorativa de muestra para fans de fantasia y criaturas magicas.",
+      "Pieza decorativa de muestra para fans de fantasía y criaturas mágicas.",
     description:
-      "Un articulo demo con look tierno, fantastico y coleccionable para ambientar escritorios y rincones especiales.",
+      "Un artículo demo con look tierno, fantástico y coleccionable para ambientar escritorios y rincones especiales.",
     sku: "NAR-DEMO-004",
     allowBackorder: false,
   },
@@ -278,25 +202,15 @@ const demoProducts: DemoProduct[] = [
     id: "demo-product-luna-blossom",
     slug: "lampara-luna-blossom",
     name: "Lámpara Luna Blossom",
-    categoryName: "Artesanal Fantasia",
-    categorySlug: "artesanal-fantasia",
+    categoryName: "Decoración",
+    categorySlug: "decoracion",
     price: 21990,
     compareAtPrice: 25990,
     stock: 7,
     isNew: true,
     isFeatured: true,
-    primaryImage: createDemoImage(
-      "Luna Blossom",
-      "#db2777",
-      "#312e81",
-      "#22d3ee",
-    ),
-    secondaryImage: createDemoImage(
-      "Luna Blossom Alt",
-      "#7e22ce",
-      "#0f172a",
-      "#f9a8d4",
-    ),
+    primaryImage: "/product-art/lampara-luna-blossom.png",
+    secondaryImage: "/product-art/lampara-luna-blossom.png",
     shortDescription:
       "Lámpara decorativa de ejemplo con aura kawaii y brillo neón.",
     description:
@@ -308,25 +222,15 @@ const demoProducts: DemoProduct[] = [
     id: "demo-product-mochi-neko",
     slug: "peluche-mochi-neko",
     name: "Peluche Mochi Neko",
-    categoryName: "Artesanal Fantasia",
-    categorySlug: "artesanal-fantasia",
+    categoryName: "Regalos",
+    categorySlug: "regalos",
     price: 12990,
     compareAtPrice: null,
     stock: 9,
     isNew: false,
     isFeatured: true,
-    primaryImage: createDemoImage(
-      "Mochi Neko",
-      "#ec4899",
-      "#581c87",
-      "#fde68a",
-    ),
-    secondaryImage: createDemoImage(
-      "Mochi Neko Alt",
-      "#9333ea",
-      "#111827",
-      "#fda4af",
-    ),
+    primaryImage: "/product-art/peluche-mochi-neko.png",
+    secondaryImage: "/product-art/peluche-mochi-neko.png",
     shortDescription:
       "Peluche demo suave y coleccionable con estilo tierno para fans.",
     description:
@@ -338,25 +242,15 @@ const demoProducts: DemoProduct[] = [
     id: "demo-product-poster-yoru",
     slug: "poster-yoru-city",
     name: "Póster Yoru City",
-    categoryName: "Deco Gamer",
-    categorySlug: "deco-gamer",
+    categoryName: "Decoración",
+    categorySlug: "decoracion",
     price: 9990,
     compareAtPrice: 12990,
     stock: 11,
     isNew: true,
     isFeatured: true,
-    primaryImage: createDemoImage(
-      "Yoru City",
-      "#2563eb",
-      "#4c1d95",
-      "#38bdf8",
-    ),
-    secondaryImage: createDemoImage(
-      "Yoru City Alt",
-      "#1d4ed8",
-      "#172554",
-      "#c084fc",
-    ),
+    primaryImage: "/product-art/poster-yoru-city.png",
+    secondaryImage: "/product-art/poster-yoru-city.png",
     shortDescription:
       "Póster demo con ciudad neón para dar carácter anime al espacio.",
     description:
@@ -368,30 +262,40 @@ const demoProducts: DemoProduct[] = [
     id: "demo-product-box-sakura",
     slug: "caja-sorpresa-sakura",
     name: "Caja Sorpresa Sakura",
-    categoryName: "Figuras Anime",
-    categorySlug: "figuras-anime",
+    categoryName: "Regalos",
+    categorySlug: "regalos",
     price: 27990,
     compareAtPrice: null,
     stock: 3,
     isNew: false,
     isFeatured: true,
-    primaryImage: createDemoImage(
-      "Sakura Box",
-      "#be185d",
-      "#4c1d95",
-      "#93c5fd",
-    ),
-    secondaryImage: createDemoImage(
-      "Sakura Box Alt",
-      "#7e22ce",
-      "#1f2937",
-      "#f472b6",
-    ),
+    primaryImage: "/product-art/caja-sorpresa-sakura.png",
+    secondaryImage: "/product-art/caja-sorpresa-sakura.png",
     shortDescription:
       "Caja demo sorpresa con artículos temáticos para fans del anime.",
     description:
       "Pensada como ejemplo de pack especial, con vibra premium y espíritu de regalo coleccionable.",
     sku: "NAR-DEMO-008",
+    allowBackorder: false,
+  },
+  {
+    id: "demo-product-neko-pulse",
+    slug: "audifonos-neko-pulse",
+    name: "Audífonos Neko Pulse",
+    categoryName: "Accesorios",
+    categorySlug: "accesorios",
+    price: 34990,
+    compareAtPrice: 39990,
+    stock: 6,
+    isNew: true,
+    isFeatured: true,
+    primaryImage: "/product-art/audifonos-neko-pulse.png",
+    secondaryImage: "/product-art/audifonos-neko-pulse.png",
+    shortDescription:
+      "Headset demo con orejas neko, brillo neón y look premium para setup.",
+    description:
+      "Un nuevo ejemplo para la sección principal, pensado para mostrar accesorios más vistosos y con mejor presencia visual.",
+    sku: "NAR-DEMO-009",
     allowBackorder: false,
   },
 ];

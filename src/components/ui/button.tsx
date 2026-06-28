@@ -20,9 +20,9 @@ export function Button({
         variant === "primary" &&
           "bg-[var(--primary)] text-[var(--primary-contrast)] hover:-translate-y-0.5 hover:shadow-lg",
         variant === "secondary" &&
-          "border border-black/10 bg-white/80 text-[var(--foreground)] hover:bg-white",
+          "border border-white/12 bg-[rgba(18,24,56,0.96)] text-[var(--foreground)] shadow-[0_0_18px_rgba(52,215,255,0.12)] hover:-translate-y-0.5 hover:bg-[rgba(28,36,78,0.98)]",
         variant === "ghost" &&
-          "text-[var(--foreground)] hover:bg-black/5",
+          "text-[var(--muted)] hover:bg-[rgba(255,255,255,0.05)] hover:text-[var(--foreground)]",
         className,
       )}
       {...props}

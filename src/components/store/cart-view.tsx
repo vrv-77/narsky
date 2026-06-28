@@ -42,7 +42,7 @@ export function CartView() {
           <h1 className="mt-3 font-serif text-5xl text-[var(--foreground)]">
             Tu carrito Narsky
           </h1>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--muted)]">
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-[rgba(240,243,255,0.82)]">
             Revisa tus piezas favoritas, ajusta cantidades y confirma tu compra
             cuando quieras.
           </p>
@@ -78,7 +78,7 @@ export function CartView() {
                 <h2 className="mt-2 font-serif text-2xl text-[var(--foreground)]">
                   {item.name}
                 </h2>
-                <p className="mt-2 text-sm text-[var(--muted)]">
+                <p className="mt-2 text-sm text-[rgba(240,243,255,0.76)]">
                   {formatClp(item.unitPrice)} c/u
                 </p>
                 <Link
@@ -104,7 +104,7 @@ export function CartView() {
                   >
                     -
                   </Button>
-                  <span className="min-w-8 text-center text-sm font-medium text-[var(--foreground)]">
+                  <span className="min-w-8 text-center text-sm font-medium text-white">
                     {item.quantity}
                   </span>
                   <Button
@@ -120,7 +120,7 @@ export function CartView() {
 
                 <Button
                   variant="ghost"
-                  className="px-0 py-0 text-sm text-[var(--muted)] hover:bg-transparent"
+                  className="px-3 py-1 text-sm text-[rgba(240,243,255,0.72)] hover:bg-[rgba(255,255,255,0.05)] hover:text-white"
                   onClick={() => removeItem(item.productId)}
                 >
                   Quitar
@@ -163,7 +163,7 @@ export function CartView() {
             </div>
           </div>
 
-          <div className="mt-6 rounded-[calc(var(--radius)-0.2rem)] bg-[color-mix(in_srgb,var(--accent)_16%,white)] p-4 text-sm leading-7 text-[var(--foreground)]">
+          <div className="mt-6 rounded-[calc(var(--radius)-0.2rem)] border border-white/10 bg-[rgba(28,34,72,0.96)] p-4 text-sm leading-7 text-[rgba(240,243,255,0.82)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
             Aqui veras el resumen completo de tu compra con envio y total final
             antes de pagar.
           </div>
