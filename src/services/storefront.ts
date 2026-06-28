@@ -53,13 +53,20 @@ const defaultThemeSettings: ThemeSettingsSnapshot = {
   mutedTextColor: "#a8b4d9",
   buttonTextColor: "#ffffff",
   borderRadius: "1.25rem",
-  contentMaxWidth: "1200px",
+  contentMaxWidth: "1480px",
   headingFont: "var(--font-source-serif), serif",
   bodyFont: "var(--font-manrope), sans-serif",
   mode: "dark",
 };
 
 const demoCategories: CategoryCard[] = [
+  {
+    id: "demo-cat-ropa",
+    slug: "ropa",
+    name: "Ropa",
+    description:
+      "Prendas con estética anime y gamer para destacar tu estilo.",
+  },
   {
     id: "demo-cat-figuras-anime",
     slug: "figuras-anime",
@@ -117,6 +124,36 @@ function createDemoImage(
 }
 
 const demoProducts: DemoProduct[] = [
+  {
+    id: "demo-product-hoodie-kawaii",
+    slug: "hoodie-narsky-kawaii",
+    name: "Hoodie Narsky Kawaii",
+    categoryName: "Ropa",
+    categorySlug: "ropa",
+    price: 32990,
+    compareAtPrice: 37990,
+    stock: 5,
+    isNew: true,
+    isFeatured: false,
+    primaryImage: createDemoImage(
+      "Hoodie Kawaii",
+      "#ec4899",
+      "#312e81",
+      "#38bdf8",
+    ),
+    secondaryImage: createDemoImage(
+      "Hoodie Alt",
+      "#a21caf",
+      "#111827",
+      "#f9a8d4",
+    ),
+    shortDescription:
+      "Polerón demo con vibra anime, tonos neón y look urbano.",
+    description:
+      "Una prenda de ejemplo para la línea de ropa de Narsky, ideal para fans que quieren llevar su estilo a diario.",
+    sku: "NAR-DEMO-000",
+    allowBackorder: false,
+  },
   {
     id: "demo-product-oni-blade",
     slug: "figura-oni-blade",
@@ -235,6 +272,126 @@ const demoProducts: DemoProduct[] = [
     description:
       "Un articulo demo con look tierno, fantastico y coleccionable para ambientar escritorios y rincones especiales.",
     sku: "NAR-DEMO-004",
+    allowBackorder: false,
+  },
+  {
+    id: "demo-product-luna-blossom",
+    slug: "lampara-luna-blossom",
+    name: "Lámpara Luna Blossom",
+    categoryName: "Artesanal Fantasia",
+    categorySlug: "artesanal-fantasia",
+    price: 21990,
+    compareAtPrice: 25990,
+    stock: 7,
+    isNew: true,
+    isFeatured: true,
+    primaryImage: createDemoImage(
+      "Luna Blossom",
+      "#db2777",
+      "#312e81",
+      "#22d3ee",
+    ),
+    secondaryImage: createDemoImage(
+      "Luna Blossom Alt",
+      "#7e22ce",
+      "#0f172a",
+      "#f9a8d4",
+    ),
+    shortDescription:
+      "Lámpara decorativa de ejemplo con aura kawaii y brillo neón.",
+    description:
+      "Una pieza demo pensada para vitrinas coloridas, rincones gamer y espacios con espíritu anime.",
+    sku: "NAR-DEMO-005",
+    allowBackorder: false,
+  },
+  {
+    id: "demo-product-mochi-neko",
+    slug: "peluche-mochi-neko",
+    name: "Peluche Mochi Neko",
+    categoryName: "Artesanal Fantasia",
+    categorySlug: "artesanal-fantasia",
+    price: 12990,
+    compareAtPrice: null,
+    stock: 9,
+    isNew: false,
+    isFeatured: true,
+    primaryImage: createDemoImage(
+      "Mochi Neko",
+      "#ec4899",
+      "#581c87",
+      "#fde68a",
+    ),
+    secondaryImage: createDemoImage(
+      "Mochi Neko Alt",
+      "#9333ea",
+      "#111827",
+      "#fda4af",
+    ),
+    shortDescription:
+      "Peluche demo suave y coleccionable con estilo tierno para fans.",
+    description:
+      "Un ejemplo ideal para regalar o sumar a una colección con estética dulce y luminosa.",
+    sku: "NAR-DEMO-006",
+    allowBackorder: false,
+  },
+  {
+    id: "demo-product-poster-yoru",
+    slug: "poster-yoru-city",
+    name: "Póster Yoru City",
+    categoryName: "Deco Gamer",
+    categorySlug: "deco-gamer",
+    price: 9990,
+    compareAtPrice: 12990,
+    stock: 11,
+    isNew: true,
+    isFeatured: true,
+    primaryImage: createDemoImage(
+      "Yoru City",
+      "#2563eb",
+      "#4c1d95",
+      "#38bdf8",
+    ),
+    secondaryImage: createDemoImage(
+      "Yoru City Alt",
+      "#1d4ed8",
+      "#172554",
+      "#c084fc",
+    ),
+    shortDescription:
+      "Póster demo con ciudad neón para dar carácter anime al espacio.",
+    description:
+      "Una referencia visual para decoración mural, vitrinas temáticas y setups inspirados en noches cyber.",
+    sku: "NAR-DEMO-007",
+    allowBackorder: false,
+  },
+  {
+    id: "demo-product-box-sakura",
+    slug: "caja-sorpresa-sakura",
+    name: "Caja Sorpresa Sakura",
+    categoryName: "Figuras Anime",
+    categorySlug: "figuras-anime",
+    price: 27990,
+    compareAtPrice: null,
+    stock: 3,
+    isNew: false,
+    isFeatured: true,
+    primaryImage: createDemoImage(
+      "Sakura Box",
+      "#be185d",
+      "#4c1d95",
+      "#93c5fd",
+    ),
+    secondaryImage: createDemoImage(
+      "Sakura Box Alt",
+      "#7e22ce",
+      "#1f2937",
+      "#f472b6",
+    ),
+    shortDescription:
+      "Caja demo sorpresa con artículos temáticos para fans del anime.",
+    description:
+      "Pensada como ejemplo de pack especial, con vibra premium y espíritu de regalo coleccionable.",
+    sku: "NAR-DEMO-008",
     allowBackorder: false,
   },
 ];

@@ -17,7 +17,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Card className="neon-panel neon-outline flex h-full flex-col overflow-hidden rounded-[1.5rem]">
-      <div className="relative aspect-[4/5] bg-[radial-gradient(circle_at_top,rgba(255,79,216,0.28),transparent_34%),linear-gradient(180deg,rgba(40,23,92,0.82),rgba(8,18,43,0.96))]">
+      <div className="relative aspect-[5/4] bg-[radial-gradient(circle_at_top,rgba(255,79,216,0.28),transparent_34%),linear-gradient(180deg,rgba(40,23,92,0.82),rgba(8,18,43,0.96))]">
         {product.primaryImage ? (
           <Image
             src={product.primaryImage}

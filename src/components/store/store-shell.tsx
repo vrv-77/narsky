@@ -3,18 +3,24 @@ import type { CSSProperties, ReactNode } from "react";
 import { StoreCartProvider } from "@/components/store/cart-provider";
 import { StoreFooter } from "@/components/store/store-footer";
 import { StoreHeader } from "@/components/store/store-header";
-import type { StoreSettingsSnapshot, ThemeSettingsSnapshot } from "@/types/domain";
+import type {
+  CategoryCard,
+  StoreSettingsSnapshot,
+  ThemeSettingsSnapshot,
+} from "@/types/domain";
 
 type StoreShellProps = {
   children: ReactNode;
   storeSettings: StoreSettingsSnapshot;
   themeSettings: ThemeSettingsSnapshot;
+  categories: CategoryCard[];
 };
 
 export function StoreShell({
   children,
   storeSettings,
   themeSettings,
+  categories,
 }: StoreShellProps) {
   return (
     <StoreCartProvider>
@@ -35,7 +41,10 @@ export function StoreShell({
         }
         className="flex min-h-screen flex-col"
       >
-        <StoreHeader storeName={storeSettings.storeName} />
+        <StoreHeader
+          storeName={storeSettings.storeName}
+          categories={categories}
+        />
         <main className="flex-1">{children}</main>
         <StoreFooter
           storeName={storeSettings.storeName}

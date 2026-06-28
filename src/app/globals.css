@@ -15,7 +15,7 @@
     0 22px 60px rgba(3, 6, 24, 0.48),
     0 0 0 1px rgba(255, 255, 255, 0.03),
     0 0 34px rgba(139, 92, 246, 0.12);
-  --content-max-width: 1200px;
+  --content-max-width: 1480px;
 }
 
 @theme inline {
@@ -114,7 +114,7 @@ textarea {
 }
 
 .app-shell {
-  width: min(100% - 2rem, var(--content-max-width));
+  width: min(100% - 1.25rem, var(--content-max-width));
   margin-inline: auto;
 }
 

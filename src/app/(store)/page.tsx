@@ -1,13 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Gift,
-  Headphones,
-  Palette,
   ShieldCheck,
-  Shirt,
   Sparkles,
-  Swords,
   Truck,
 } from "lucide-react";
 
@@ -31,8 +26,8 @@ export default async function StoreHomePage() {
     ).values(),
   );
 
-  const spotlightProducts = allShowcaseProducts.slice(0, 4);
-  const trendProducts = allShowcaseProducts.slice(0, 4);
+  const spotlightProducts = allShowcaseProducts.slice(0, 8);
+  const trendProducts = allShowcaseProducts.slice(0, 3);
 
   const maxDiscount = offerProducts.reduce((highestDiscount, product) => {
     if (!product.compareAtPrice || product.compareAtPrice <= product.price) {
@@ -49,50 +44,28 @@ export default async function StoreHomePage() {
   const quickCategories = [
     {
       name: "Ropa",
-      description: "Viste tu pasión anime",
-      href: "/productos",
-      image: allShowcaseProducts[0]?.primaryImage ?? null,
-      icon: Shirt,
+      href: "/productos?categoria=ropa",
+      image: "/category-art/ropa.png",
     },
     {
       name: "Figuras",
-      description: "Coleccionables con presencia",
-      href: "/productos",
-      image:
-        allShowcaseProducts[1]?.primaryImage ??
-        allShowcaseProducts[0]?.primaryImage ??
-        null,
-      icon: Swords,
+      href: "/productos?categoria=figuras",
+      image: "/category-art/Figuras.png",
     },
     {
       name: "Accesorios",
-      description: "Detalles para tu setup",
-      href: "/productos",
-      image:
-        allShowcaseProducts[2]?.primaryImage ??
-        allShowcaseProducts[0]?.primaryImage ??
-        null,
-      icon: Headphones,
+      href: "/productos?categoria=accesorios",
+      image: "/category-art/Accesorios.png",
     },
     {
       name: "Decoración",
-      description: "Espacios con vibra neón",
-      href: "/productos",
-      image:
-        allShowcaseProducts[3]?.primaryImage ??
-        allShowcaseProducts[1]?.primaryImage ??
-        null,
-      icon: Palette,
+      href: "/productos?categoria=decoracion",
+      image: "/category-art/Decoracion.png",
     },
     {
       name: "Regalos",
-      description: "Ideas para sorprender fans",
-      href: "/productos",
-      image:
-        allShowcaseProducts[0]?.secondaryImage ??
-        allShowcaseProducts[2]?.primaryImage ??
-        null,
-      icon: Gift,
+      href: "/productos?categoria=regalos",
+      image: "/category-art/Regalos.png",
     },
   ];
 
@@ -165,40 +138,25 @@ export default async function StoreHomePage() {
             </div>
           </div>
 
-          <div className="-mt-12 relative z-20 px-2 lg:px-4">
+          <div className="-mt-16 relative z-20 px-2 lg:-mt-20 lg:px-4">
             <div className="grid gap-4 lg:grid-cols-5">
               {quickCategories.map((category) => {
-                const Icon = category.icon;
-
                 return (
-                  <Link key={category.name} href={category.href}>
-                    <Card className="neon-panel h-full rounded-[1.5rem] border border-white/10 bg-[rgba(12,17,44,0.92)] p-4 hover:-translate-y-1">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <div className="inline-flex rounded-full bg-[rgba(255,79,216,0.12)] p-2 text-[var(--secondary)]">
-                            <Icon className="size-4" />
-                          </div>
-                          <p className="mt-3 text-xl font-semibold text-white">
-                            {category.name}
-                          </p>
-                          <p className="mt-2 max-w-[14rem] text-sm leading-6 text-[var(--muted)]">
-                            {category.description}
-                          </p>
-                        </div>
-                        {category.image ? (
-                          <Image
-                            src={category.image}
-                            alt={category.name}
-                            width={84}
-                            height={84}
-                            className="rounded-2xl border border-white/10 object-cover shadow-[0_0_20px_rgba(255,79,216,0.18)]"
-                          />
-                        ) : null}
-                      </div>
-                      <span className="mt-4 inline-flex text-sm font-medium text-[var(--secondary)]">
-                        Explorar →
-                      </span>
-                    </Card>
+                  <Link
+                    key={category.name}
+                    href={category.href}
+                    aria-label={category.name}
+                    title={category.name}
+                    className="group flex items-center justify-center rounded-[1.75rem] px-1 py-1"
+                  >
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      width={520}
+                      height={520}
+                      unoptimized
+                      className="h-[22rem] w-auto object-contain drop-shadow-[0_0_18px_rgba(24,28,68,0.25)] transition duration-300 ease-out group-hover:-translate-y-3 group-hover:scale-[1.1] group-hover:drop-shadow-[0_0_42px_rgba(255,79,216,0.38)] lg:h-[24rem]"
+                    />
                   </Link>
                 );
               })}
@@ -209,29 +167,30 @@ export default async function StoreHomePage() {
 
       <section className="app-shell">
         <Card className="neon-panel rounded-[2rem] border border-white/10 p-6 lg:p-8">
-          <div className="grid gap-5 xl:grid-cols-[1.25fr_0.75fr]">
+          <div className="grid gap-5 xl:grid-cols-[minmax(0,1.72fr)_minmax(300px,360px)]">
             <div className="space-y-5">
-              <div className="flex items-end justify-between gap-4">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.22em] text-[var(--secondary)]">
-                    Productos destacados
-                  </p>
-                  <h2 className="mt-2 font-serif text-4xl text-white">
-                    Selección principal
-                  </h2>
-                </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.22em] text-[var(--secondary)]">
+                  Productos destacados
+                </p>
+                <h2 className="mt-2 font-serif text-4xl text-white">
+                  Selección principal
+                </h2>
+              </div>
+
+              <div className="grid gap-5 md:grid-cols-2 2xl:grid-cols-3">
+                {spotlightProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+
+              <div className="flex justify-end">
                 <Link
                   href="/productos"
                   className="text-sm font-medium text-[var(--secondary)]"
                 >
                   Ver todo
                 </Link>
-              </div>
-
-              <div className="grid gap-5 md:grid-cols-2 2xl:grid-cols-4">
-                {spotlightProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
               </div>
 
               <div className="grid gap-4 md:grid-cols-4">

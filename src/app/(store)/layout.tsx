@@ -12,6 +12,7 @@ export default async function StoreLayout({
     <StoreShell
       storeSettings={snapshot.storeSettings}
       themeSettings={snapshot.themeSettings}
+      categories={snapshot.featuredCategories}
     >
       {children}
     </StoreShell>
