@@ -7,7 +7,12 @@ import {
 } from "lucide-react";
 
 import { EmptyState } from "@/components/shared/empty-state";
+import { RevealSection } from "@/components/shared/reveal-section";
+import { FeaturedShowcaseCarousel } from "@/components/store/featured-showcase-carousel";
+import { MarqueeStrip } from "@/components/store/marquee-strip";
 import { ProductCard } from "@/components/store/product-card";
+import { StoreCategoryBento } from "@/components/store/store-category-bento";
+import { StoreProductTabs } from "@/components/store/store-product-tabs";
 import { Card } from "@/components/ui/card";
 import { formatClp } from "@/lib/utils";
 import { getStorefrontSnapshot } from "@/services/storefront";
@@ -66,6 +71,39 @@ export default async function StoreHomePage() {
       name: "Regalos",
       href: "/productos?categoria=regalos",
       image: "/category-art/Regalos.png",
+    },
+  ];
+
+  const categoryHighlights = [
+    {
+      name: "Ropa",
+      href: "/productos?categoria=ropa",
+      image: "/category-art/ropa.png",
+      description: "Streetwear anime y gamer con presencia neón.",
+    },
+    {
+      name: "Figuras",
+      href: "/productos?categoria=figuras",
+      image: "/category-art/Figuras.png",
+      description: "Coleccionables con energía visual para tu vitrina.",
+    },
+    {
+      name: "Accesorios",
+      href: "/productos?categoria=accesorios",
+      image: "/category-art/Accesorios.png",
+      description: "Setup, audio y piezas premium para escritorio.",
+    },
+    {
+      name: "Decoración",
+      href: "/productos?categoria=decoracion",
+      image: "/category-art/Decoracion.png",
+      description: "Lámparas, dioramas y detalles con atmósfera.",
+    },
+    {
+      name: "Regalos",
+      href: "/productos?categoria=regalos",
+      image: "/category-art/Regalos.png",
+      description: "Packs y sorpresas para fans del anime y kawaii.",
     },
   ];
 
@@ -166,17 +204,25 @@ export default async function StoreHomePage() {
       </section>
 
       <section className="app-shell">
+        <RevealSection>
+          <MarqueeStrip />
+        </RevealSection>
+      </section>
+
+      <section className="app-shell">
         <Card className="neon-panel rounded-[2rem] border border-white/10 p-6 lg:p-8">
+          <div className="mb-5">
+            <p className="text-xs uppercase tracking-[0.22em] text-[var(--secondary)]">
+              Productos destacados
+            </p>
+            <h2 className="mt-2 font-serif text-4xl text-white">
+              Selección principal
+            </h2>
+          </div>
+
           <div className="grid gap-5 xl:grid-cols-[minmax(0,1.72fr)_minmax(300px,360px)]">
             <div className="space-y-5">
-              <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-[var(--secondary)]">
-                  Productos destacados
-                </p>
-                <h2 className="mt-2 font-serif text-4xl text-white">
-                  Selección principal
-                </h2>
-              </div>
+              <FeaturedShowcaseCarousel products={spotlightProducts} />
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {spotlightProducts.map((product) => (
@@ -217,24 +263,24 @@ export default async function StoreHomePage() {
               </div>
             </div>
 
-            <Card className="neon-panel rounded-[1.75rem] p-5">
-              <div className="rounded-[1.5rem] border border-[rgba(52,215,255,0.16)] bg-[rgba(255,255,255,0.04)] p-5">
+            <Card className="neon-panel flex h-full flex-col rounded-[1.75rem] p-5">
+              <div className="rounded-[1.5rem] border border-[rgba(52,215,255,0.16)] bg-[rgba(255,255,255,0.04)] p-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--secondary)]">
                   Solo por tiempo limitado
                 </p>
-                <h3 className="mt-3 text-3xl font-black uppercase leading-none text-white">
+                <h3 className="mt-2 text-[2rem] font-black uppercase leading-none text-white">
                   Mega
                   <span className="block bg-[linear-gradient(90deg,#ff68df_0%,#38d8ff_100%)] bg-clip-text text-transparent">
                     oferta
                   </span>
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
                   Hasta {maxDiscount > 0 ? `${maxDiscount}%` : "15%"} de descuento
                   en productos destacados.
                 </p>
                 <Link
                   href="/productos"
-                  className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[linear-gradient(90deg,#36d8ff_0%,#5db6ff_100%)] px-5 py-3 text-sm font-semibold text-[#09111f] shadow-[0_0_24px_rgba(52,215,255,0.35)]"
+                  className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-[linear-gradient(90deg,#36d8ff_0%,#5db6ff_100%)] px-5 py-3 text-sm font-semibold text-[#09111f] shadow-[0_0_24px_rgba(52,215,255,0.35)]"
                 >
                   Comprar oferta
                 </Link>
@@ -292,9 +338,56 @@ export default async function StoreHomePage() {
                   </div>
                 ))}
               </div>
+
+              <div className="mt-auto pt-5">
+                <div className="rounded-[1.5rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,79,216,0.08),rgba(52,215,255,0.05))] p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--secondary)]">
+                    Beneficios Narsky
+                  </p>
+                  <div className="mt-3 space-y-2 text-sm text-[rgba(240,243,255,0.82)]">
+                    <p>• Compra segura y vitrina curada</p>
+                    <p>• Despacho flexible o retiro</p>
+                    <p>• Drops anime, gamer y kawaii</p>
+                  </div>
+                  <Link
+                    href="/contacto"
+                    className="mt-4 inline-flex text-sm font-medium text-[var(--secondary)]"
+                  >
+                    Consultar novedades
+                  </Link>
+                </div>
+              </div>
             </Card>
           </div>
         </Card>
+      </section>
+
+      <section className="app-shell space-y-6">
+        <RevealSection className="space-y-6">
+          <div>
+            <p className="text-xs uppercase tracking-[0.22em] text-[var(--secondary)]">
+              Categorías
+            </p>
+            <h2 className="mt-3 font-serif text-4xl text-white">
+              Descubre colecciones vivas
+            </h2>
+          </div>
+          <StoreCategoryBento items={categoryHighlights} />
+        </RevealSection>
+      </section>
+
+      <section className="app-shell space-y-6">
+        <RevealSection className="space-y-6">
+          <div>
+            <p className="text-xs uppercase tracking-[0.22em] text-[var(--secondary)]">
+              Explora dinámico
+            </p>
+            <h2 className="mt-3 font-serif text-4xl text-white">
+              Navega por categoría
+            </h2>
+          </div>
+          <StoreProductTabs products={allShowcaseProducts} />
+        </RevealSection>
       </section>
 
       {featuredCategories.length > 0 ? (

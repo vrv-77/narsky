@@ -1,19 +1,21 @@
-import { AdminPlaceholderPage } from "@/components/admin/admin-placeholder-page";
+import { notFound } from "next/navigation";
 
-type AdminProductDetailPageProps = {
+import { AdminProductEditor } from "@/components/admin/admin-product-editor";
+import { getAdminProductById } from "@/services/admin-catalog";
+
+type AdminProductEditPageProps = {
   params: Promise<{ id: string }>;
 };
 
-export default async function AdminProductDetailPage({
+export default async function AdminProductEditPage({
   params,
-}: AdminProductDetailPageProps) {
+}: AdminProductEditPageProps) {
   const { id } = await params;
+  const product = await getAdminProductById(id);
 
-  return (
-    <AdminPlaceholderPage
-      eyebrow={`Producto ${id}`}
-      title="Editor de producto pendiente de implementación"
-      description="Esta ruta queda preparada para edición segura con validaciones servidor, control de stock, reemplazo de imágenes y auditoría."
-    />
-  );
+  if (!product) {
+    notFound();
+  }
+
+  return <AdminProductEditor mode="edit" product={product} />;
 }

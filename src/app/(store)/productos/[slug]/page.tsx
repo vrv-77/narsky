@@ -2,6 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { AddToCartButton } from "@/components/store/add-to-cart-button";
+import { ProductStickyBuyBar } from "@/components/store/product-sticky-buy-bar";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { formatClp } from "@/lib/utils";
@@ -41,7 +42,7 @@ export default async function ProductDetailPage({
   };
 
   return (
-    <div className="app-shell py-10">
+    <div className="app-shell pb-28 pt-10 lg:pb-10">
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <Card className="relative flex aspect-square items-center justify-center overflow-hidden p-6">
           {primaryImage ? (
@@ -103,6 +104,7 @@ export default async function ProductDetailPage({
           </div>
         </Card>
       </div>
+      <ProductStickyBuyBar product={productForCart} />
     </div>
   );
 }

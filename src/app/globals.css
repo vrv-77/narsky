@@ -40,6 +40,7 @@ html {
   background:
     radial-gradient(circle at top left, rgba(255, 79, 216, 0.2), transparent 28%),
     radial-gradient(circle at top right, rgba(52, 215, 255, 0.14), transparent 24%),
+    linear-gradient(90deg, rgba(255, 79, 216, 0.03) 0%, transparent 12%, transparent 88%, rgba(52, 215, 255, 0.03) 100%),
     radial-gradient(circle at center, rgba(139, 92, 246, 0.14), transparent 30%),
     var(--background);
 }
@@ -48,6 +49,15 @@ body {
   background:
     radial-gradient(circle at 20% 0%, rgba(255, 79, 216, 0.14), transparent 22%),
     radial-gradient(circle at 80% 10%, rgba(52, 215, 255, 0.12), transparent 24%),
+    radial-gradient(circle at 0% 50%, rgba(255, 79, 216, 0.12), transparent 18%),
+    radial-gradient(circle at 100% 40%, rgba(52, 215, 255, 0.1), transparent 18%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.014) 0,
+      rgba(255, 255, 255, 0.014) 1px,
+      transparent 1px,
+      transparent 88px
+    ),
     linear-gradient(180deg, #090b1a 0%, #050814 100%);
   color: var(--foreground);
   font-family: var(--font-manrope), sans-serif;
@@ -122,6 +132,19 @@ textarea {
   display: grid;
   min-height: 100vh;
   grid-template-columns: 280px minmax(0, 1fr);
+}
+
+.marquee-track {
+  animation: marquee-scroll 26s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
 }
 
 @media (max-width: 1024px) {

@@ -1,11 +1,29 @@
-import { AdminPlaceholderPage } from "@/components/admin/admin-placeholder-page";
+import { AdminProductsPage } from "@/components/admin/admin-products-page";
+import { getAdminCatalogData } from "@/services/admin-catalog";
 
-export default function AdminProductsPage() {
+type AdminProductsPageProps = {
+  searchParams?: Promise<{
+    q?: string;
+    categoria?: string;
+    vista?: string;
+  }>;
+};
+
+export default async function AdminProductsPageRoute({
+  searchParams,
+}: AdminProductsPageProps) {
+  const filters = (await searchParams) ?? {};
+  const catalog = await getAdminCatalogData();
+
   return (
-    <AdminPlaceholderPage
-      eyebrow="Productos"
-      title="Gestión de productos lista para la siguiente etapa"
-      description="El schema ya soporta productos, imágenes, stock, soft delete, SEO y auditoría. La siguiente etapa conecta formularios, storage y tablas de administración."
+    <AdminProductsPage
+      configured={catalog.configured}
+      products={catalog.products}
+      categories={catalog.categories}
+      metrics={catalog.metrics}
+      query={filters.q ?? ""}
+      category={filters.categoria ?? ""}
+      view={filters.vista ?? "all"}
     />
   );
 }

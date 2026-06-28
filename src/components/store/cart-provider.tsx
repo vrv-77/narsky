@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useMemo,
+  useState,
   useSyncExternalStore,
   type ReactNode,
 } from "react";
@@ -28,11 +29,17 @@ type CartContextValue = {
   subtotal: number;
   shipping: number;
   total: number;
+  lastAddedItem: CartPreviewItem | null;
+  isToastOpen: boolean;
   addItem: (product: CartProduct) => void;
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
   getItemQuantity: (productId: string) => number;
+  isDrawerOpen: boolean;
+  openDrawer: () => void;
+  closeDrawer: () => void;
+  closeToast: () => void;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -160,6 +167,9 @@ function getCartServerSnapshot() {
 }
 
 export function StoreCartProvider({ children }: { children: ReactNode }) {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [lastAddedItem, setLastAddedItem] = useState<CartPreviewItem | null>(null);
+  const [isToastOpen, setIsToastOpen] = useState(false);
   const items = useSyncExternalStore(
     subscribeToCart,
     getCartSnapshot,
@@ -183,7 +193,18 @@ export function StoreCartProvider({ children }: { children: ReactNode }) {
       subtotal,
       shipping,
       total: subtotal + shipping,
+      lastAddedItem,
+      isToastOpen,
       addItem: (product) => {
+        const nextItem: CartPreviewItem = {
+          productId: product.id,
+          slug: product.slug,
+          name: product.name,
+          image: product.primaryImage,
+          unitPrice: product.price,
+          quantity: 1,
+        };
+
         updateStoredCart((currentItems) => {
           const existingItem = currentItems.find(
             (item) => item.productId === product.id,
@@ -202,16 +223,12 @@ export function StoreCartProvider({ children }: { children: ReactNode }) {
 
           return [
             ...currentItems,
-            {
-              productId: product.id,
-              slug: product.slug,
-              name: product.name,
-              image: product.primaryImage,
-              unitPrice: product.price,
-              quantity: 1,
-            },
+            nextItem,
           ];
         });
+        setLastAddedItem(nextItem);
+        setIsToastOpen(true);
+        setIsDrawerOpen(true);
       },
       removeItem: (productId) => {
         updateStoredCart((currentItems) =>
@@ -238,8 +255,12 @@ export function StoreCartProvider({ children }: { children: ReactNode }) {
       },
       getItemQuantity: (productId) =>
         items.find((item) => item.productId === productId)?.quantity ?? 0,
+      isDrawerOpen,
+      openDrawer: () => setIsDrawerOpen(true),
+      closeDrawer: () => setIsDrawerOpen(false),
+      closeToast: () => setIsToastOpen(false),
     };
-  }, [items]);
+  }, [isDrawerOpen, isToastOpen, items, lastAddedItem]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
