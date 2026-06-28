@@ -36,6 +36,7 @@ const publicEnvSchema = z.object({
 const serverEnvSchema = publicEnvSchema.extend({
   SUPABASE_SERVICE_ROLE_KEY: optionalString,
   ADMIN_EMAIL: optionalString,
+  ADMIN_PASSWORD: optionalString,
   ADMIN_SESSION_SECRET: optionalString,
   FLOW_ENVIRONMENT: z.enum(["sandbox", "production"]).default("sandbox"),
   FLOW_API_URL: optionalUrl,
@@ -62,6 +63,7 @@ export function getServerEnv() {
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
     ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
     ADMIN_SESSION_SECRET: process.env.ADMIN_SESSION_SECRET,
     FLOW_ENVIRONMENT: process.env.FLOW_ENVIRONMENT,
     FLOW_API_URL: process.env.FLOW_API_URL,
@@ -90,7 +92,7 @@ export function hasSupabaseServiceEnv() {
   );
 }
 
-export function hasAdminAuthEnv() {
+export function hasAdminSupabaseAuthEnv() {
   const env = getServerEnv();
   return Boolean(
     env.ADMIN_EMAIL &&
@@ -98,4 +100,13 @@ export function hasAdminAuthEnv() {
       env.NEXT_PUBLIC_SUPABASE_URL &&
       env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   );
+}
+
+export function hasAdminLocalAuthEnv() {
+  const env = getServerEnv();
+  return Boolean(env.ADMIN_PASSWORD && env.ADMIN_SESSION_SECRET);
+}
+
+export function hasAdminAuthEnv() {
+  return hasAdminSupabaseAuthEnv() || hasAdminLocalAuthEnv();
 }

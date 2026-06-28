@@ -60,13 +60,24 @@ cp .env.example .env.local
 Variables obligatorias para esta etapa:
 
 - `NEXT_PUBLIC_SITE_URL`
+- `ADMIN_SESSION_SECRET`
+- `ADMIN_PASSWORD` para acceso admin local
+
+Variables obligatorias para modo completo con Supabase:
+
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `ADMIN_EMAIL`
-- `ADMIN_SESSION_SECRET`
 
 ## Supabase
+
+Si quieres avanzar primero sin Supabase Auth, puedes usar solo:
+
+- `ADMIN_PASSWORD`
+- `ADMIN_SESSION_SECRET`
+
+Con eso el panel `/admin/login` funciona en modo local.
 
 ### 1. Crear proyecto
 

@@ -1,13 +1,16 @@
 "use server";
 
+import { timingSafeEqual } from "node:crypto";
+
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { getServerEnv, hasAdminAuthEnv } from "@/lib/env";
 import {
-  clearAdminSession,
-  setAdminSession,
-} from "@/lib/auth/admin";
+  getServerEnv,
+  hasAdminAuthEnv,
+  hasAdminSupabaseAuthEnv,
+} from "@/lib/env";
+import { clearAdminSession, setAdminSession } from "@/lib/auth/admin";
 import {
   assertAdminLoginRateLimit,
   registerAdminLoginAttempt,
@@ -28,7 +31,7 @@ export async function loginAdminAction(
     return {
       status: "error",
       message:
-        "Faltan variables de entorno para autenticar al administrador. Revisa el README.",
+        "Faltan variables para autenticar al administrador. Configura `ADMIN_PASSWORD` y `ADMIN_SESSION_SECRET`, o bien `ADMIN_EMAIL` junto a Supabase.",
     };
   }
 
@@ -59,6 +62,42 @@ export async function loginAdminAction(
   }
 
   const env = getServerEnv();
+
+  if (!hasAdminSupabaseAuthEnv()) {
+    const expectedPassword = env.ADMIN_PASSWORD ?? "";
+    const providedPassword = parsedData.data.password;
+    const passwordMatches =
+      expectedPassword.length === providedPassword.length &&
+      timingSafeEqual(
+        Buffer.from(expectedPassword),
+        Buffer.from(providedPassword),
+      );
+
+    if (!passwordMatches) {
+      await registerAdminLoginAttempt({
+        ipAddress,
+        userAgent,
+        success: false,
+        failureReason: "invalid_credentials",
+      });
+
+      return {
+        status: "error",
+        message: "La contraseña es incorrecta.",
+      };
+    }
+
+    await setAdminSession("local-admin", "admin");
+    await registerAdminLoginAttempt({
+      ipAddress,
+      userAgent,
+      success: true,
+      userId: "local-admin",
+    });
+
+    redirect("/admin");
+  }
+
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase.auth.signInWithPassword({
     email: env.ADMIN_EMAIL!,
@@ -116,7 +155,7 @@ export async function loginAdminAction(
 }
 
 export async function logoutAdminAction() {
-  if (hasAdminAuthEnv()) {
+  if (hasAdminSupabaseAuthEnv()) {
     const supabase = await createSupabaseServerClient();
     await supabase.auth.signOut();
   }

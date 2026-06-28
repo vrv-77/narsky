@@ -15,7 +15,7 @@ export function AdminShell({
   email,
 }: AdminShellProps) {
   return (
-    <div className="admin-grid bg-[linear-gradient(180deg,#f7f2ea_0%,#f4eee5_100%)]">
+    <div className="admin-grid bg-[radial-gradient(circle_at_top_left,rgba(255,79,216,0.14),transparent_24%),radial-gradient(circle_at_top_right,rgba(52,215,255,0.12),transparent_22%),linear-gradient(180deg,#070b1d_0%,#050814_100%)]">
       <AdminSidebar />
       <div className="min-w-0">
         <AdminHeader role={role} email={email} />

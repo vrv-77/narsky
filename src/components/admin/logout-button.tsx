@@ -10,7 +10,7 @@ function SubmitButton() {
   return (
     <button
       type="submit"
-      className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium text-[var(--foreground)] disabled:opacity-50"
+      className="rounded-full border border-white/12 bg-[rgba(18,24,56,0.96)] px-4 py-2 text-sm font-medium text-[var(--foreground)] shadow-[0_0_18px_rgba(52,215,255,0.12)] hover:bg-[rgba(28,36,78,0.98)] disabled:opacity-50"
       disabled={pending}
     >
       {pending ? "Saliendo..." : "Cerrar sesión"}

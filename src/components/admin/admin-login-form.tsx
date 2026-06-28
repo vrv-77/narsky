@@ -48,8 +48,9 @@ export function AdminLoginForm({ isConfigured }: { isConfigured: boolean }) {
 
       {!isConfigured ? (
         <p className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          Completa las variables `ADMIN_EMAIL`, `ADMIN_SESSION_SECRET` y las
-          credenciales de Supabase para habilitar el ingreso.
+          Configura `ADMIN_PASSWORD` y `ADMIN_SESSION_SECRET` para el acceso
+          local, o bien `ADMIN_EMAIL` junto a las credenciales de Supabase para
+          el acceso completo.
         </p>
       ) : null}
 

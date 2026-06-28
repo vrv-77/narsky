@@ -63,7 +63,7 @@ export function AdminProductsPage({
           <h1 className="mt-3 font-serif text-4xl text-[var(--foreground)]">
             Productos
           </h1>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-[color:#53627f]">
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-[rgba(208,218,255,0.82)]">
             Ya puedes revisar el catálogo, confirmar estado, stock, precios e
             imágenes antes de conectar la edición persistente con Supabase.
           </p>
@@ -74,7 +74,7 @@ export function AdminProductsPage({
         </Link>
       </div>
 
-      <Card className="rounded-[1.6rem] border-[#e8d8c9] bg-[#fff9f3] p-4 text-sm text-[#725a45]">
+      <Card className="rounded-[1.6rem] border-white/10 bg-[linear-gradient(180deg,rgba(24,31,72,0.9)_0%,rgba(13,19,48,0.96)_100%)] p-4 text-sm text-[rgba(208,218,255,0.78)]">
         {configured
           ? "El panel está leyendo productos reales desde Supabase."
           : "El panel está mostrando productos demo para revisar diseño, estructura y flujo administrativo."}
@@ -87,7 +87,7 @@ export function AdminProductsPage({
         <MetricCard label="Sin stock" value={metrics.outOfStockProducts.toString()} />
       </div>
 
-      <Card className="space-y-4 p-5">
+      <Card className="space-y-4 border-white/10 p-5">
         <form className="grid gap-3 lg:grid-cols-[minmax(0,1.2fr)_220px_220px_auto]">
           <Input
             name="q"
@@ -98,11 +98,17 @@ export function AdminProductsPage({
           <select
             name="categoria"
             defaultValue={category}
-            className="w-full rounded-2xl border bg-white/90 px-4 py-3 text-sm text-[var(--foreground)] outline-none focus:border-[var(--secondary)]"
+            className="w-full rounded-2xl border border-white/10 bg-[rgba(10,16,42,0.96)] px-4 py-3 text-sm text-[var(--foreground)] outline-none focus:border-[var(--secondary)]"
           >
-            <option value="">Todas las categorías</option>
+            <option value="" className="bg-[#0a102a] text-white">
+              Todas las categorías
+            </option>
             {categories.map((item) => (
-              <option key={item.id} value={item.name.toLowerCase()}>
+              <option
+                key={item.id}
+                value={item.name.toLowerCase()}
+                className="bg-[#0a102a] text-white"
+              >
                 {item.name}
               </option>
             ))}
@@ -111,13 +117,23 @@ export function AdminProductsPage({
           <select
             name="vista"
             defaultValue={view}
-            className="w-full rounded-2xl border bg-white/90 px-4 py-3 text-sm text-[var(--foreground)] outline-none focus:border-[var(--secondary)]"
+            className="w-full rounded-2xl border border-white/10 bg-[rgba(10,16,42,0.96)] px-4 py-3 text-sm text-[var(--foreground)] outline-none focus:border-[var(--secondary)]"
           >
-            <option value="all">Todas</option>
-            <option value="featured">Destacados</option>
-            <option value="new">Nuevos</option>
-            <option value="low-stock">Stock bajo</option>
-            <option value="out-of-stock">Sin stock</option>
+            <option value="all" className="bg-[#0a102a] text-white">
+              Todas
+            </option>
+            <option value="featured" className="bg-[#0a102a] text-white">
+              Destacados
+            </option>
+            <option value="new" className="bg-[#0a102a] text-white">
+              Nuevos
+            </option>
+            <option value="low-stock" className="bg-[#0a102a] text-white">
+              Stock bajo
+            </option>
+            <option value="out-of-stock" className="bg-[#0a102a] text-white">
+              Sin stock
+            </option>
           </select>
 
           <Button type="submit" className="w-full lg:w-auto">
@@ -125,7 +141,7 @@ export function AdminProductsPage({
           </Button>
         </form>
 
-        <div className="flex flex-wrap items-center gap-2 text-sm text-[#6a7897]">
+        <div className="flex flex-wrap items-center gap-2 text-sm text-[rgba(162,180,230,0.76)]">
           <span>{visibleProducts.length} productos visibles</span>
           <span>•</span>
           <span>{metrics.newProducts} marcados como nuevos</span>
@@ -138,9 +154,9 @@ export function AdminProductsPage({
         {visibleProducts.map((product) => (
           <Card
             key={product.id}
-            className="grid gap-4 p-4 lg:grid-cols-[112px_minmax(0,1fr)_180px_180px]"
+            className="grid gap-4 border-white/10 p-4 lg:grid-cols-[112px_minmax(0,1fr)_180px_180px]"
           >
-            <div className="relative aspect-square overflow-hidden rounded-[1.2rem] border border-black/5 bg-[#f6efe8]">
+            <div className="relative aspect-square overflow-hidden rounded-[1.2rem] border border-white/10 bg-[rgba(10,16,42,0.92)]">
               {product.primaryImage ? (
                 <Image
                   src={product.primaryImage}
@@ -149,7 +165,7 @@ export function AdminProductsPage({
                   className="object-cover"
                 />
               ) : (
-                <div className="flex h-full items-center justify-center text-xs text-[#7f8aa5]">
+                <div className="flex h-full items-center justify-center text-xs text-[rgba(162,180,230,0.72)]">
                   Sin imagen
                 </div>
               )}
@@ -161,7 +177,7 @@ export function AdminProductsPage({
                 {product.isFeatured ? (
                   <Badge className="bg-fuchsia-100 text-fuchsia-900">Destacado</Badge>
                 ) : null}
-                <Badge className="bg-slate-100 text-slate-900">
+                <Badge className="bg-[rgba(230,215,255,0.92)] text-slate-900">
                   {product.statusLabel}
                 </Badge>
               </div>
@@ -169,18 +185,20 @@ export function AdminProductsPage({
               <h2 className="mt-3 font-serif text-2xl text-[var(--foreground)]">
                 {product.name}
               </h2>
-              <p className="mt-1 text-sm text-[#6a7897]">{product.slug}</p>
-              <p className="mt-2 text-sm text-[#53627f]">
+              <p className="mt-1 text-sm text-[rgba(162,180,230,0.76)]">
+                {product.slug}
+              </p>
+              <p className="mt-2 text-sm text-[rgba(208,218,255,0.82)]">
                 {product.categoryName ?? "Sin categoría"}
               </p>
             </div>
 
             <div className="space-y-2 text-sm">
-              <p className="text-[#6a7897]">Precio</p>
+              <p className="text-[rgba(162,180,230,0.76)]">Precio</p>
               <p className="text-lg font-semibold text-[var(--foreground)]">
                 {formatClp(product.price)}
               </p>
-              <p className="text-[#6a7897]">
+              <p className="text-[rgba(162,180,230,0.76)]">
                 {product.compareAtPrice
                   ? `Antes ${formatClp(product.compareAtPrice)}`
                   : "Sin precio anterior"}
@@ -189,7 +207,7 @@ export function AdminProductsPage({
 
             <div className="flex flex-col justify-between gap-3">
               <div>
-                <p className="text-sm text-[#6a7897]">Stock</p>
+                <p className="text-sm text-[rgba(162,180,230,0.76)]">Stock</p>
                 <p className="mt-1 text-lg font-semibold text-[var(--foreground)]">
                   {product.stock}
                 </p>
@@ -210,7 +228,7 @@ export function AdminProductsPage({
         ))}
 
         {visibleProducts.length === 0 ? (
-          <Card className="p-8 text-center text-[#6a7897]">
+          <Card className="border-white/10 p-8 text-center text-[rgba(162,180,230,0.76)]">
             No hay productos que coincidan con ese filtro.
           </Card>
         ) : null}
@@ -221,8 +239,8 @@ export function AdminProductsPage({
 
 function MetricCard({ label, value }: { label: string; value: string }) {
   return (
-    <Card className="p-5">
-      <p className="text-sm text-[#6a7897]">{label}</p>
+    <Card className="border-white/10 p-5">
+      <p className="text-sm text-[rgba(162,180,230,0.76)]">{label}</p>
       <p className="mt-3 text-4xl font-semibold text-[var(--foreground)]">{value}</p>
     </Card>
   );

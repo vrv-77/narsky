@@ -62,7 +62,7 @@ export function AdminOverview({
           <h1 className="mt-3 font-serif text-4xl text-[var(--foreground)]">
             Panel administrativo
           </h1>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-[#53627f]">
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-[rgba(208,218,255,0.82)]">
             El panel ya permite revisar catálogo, abrir fichas administrativas y
             validar cómo se está viendo la operación antes de conectar edición,
             pedidos y automatizaciones.
@@ -78,9 +78,9 @@ export function AdminOverview({
         {cards.map((metric) => {
           const Icon = metric.icon;
           return (
-            <Card key={metric.label} className="p-5">
+            <Card key={metric.label} className="border-white/10 p-5">
               <div className="flex items-center justify-between">
-                <div className="flex size-11 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--accent)_24%,white)] text-[var(--secondary)]">
+                <div className="flex size-11 items-center justify-center rounded-2xl bg-[rgba(230,215,255,0.9)] text-[var(--secondary)] shadow-[0_0_18px_rgba(52,215,255,0.18)]">
                   <Icon className="size-5" />
                 </div>
                 <p className="text-4xl font-semibold text-[var(--foreground)]">
@@ -90,7 +90,7 @@ export function AdminOverview({
               <p className="mt-5 text-sm font-semibold text-[var(--foreground)]">
                 {metric.label}
               </p>
-              <p className="mt-2 text-sm leading-6 text-[#6a7897]">
+              <p className="mt-2 text-sm leading-6 text-[rgba(196,209,248,0.72)]">
                 {metric.detail}
               </p>
             </Card>
@@ -98,7 +98,7 @@ export function AdminOverview({
         })}
       </div>
 
-      <Card className="p-6">
+      <Card className="border-white/10 p-6">
         <div className="flex items-end justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-[var(--secondary)]">
@@ -117,17 +117,22 @@ export function AdminOverview({
           {recentProducts.map((product) => (
             <div
               key={product.id}
-              className="rounded-[1.3rem] border border-black/5 bg-white/75 p-4"
+              className="rounded-[1.3rem] border border-white/10 bg-[linear-gradient(180deg,rgba(24,31,72,0.92)_0%,rgba(13,19,48,0.96)_100%)] p-4 shadow-[0_14px_34px_rgba(0,0,0,0.24)]"
             >
-              <p className="text-xs uppercase tracking-[0.16em] text-[#6a7897]">
+              <p className="text-xs uppercase tracking-[0.16em] text-[rgba(162,180,230,0.72)]">
                 {product.categoryName ?? "Sin categoría"}
               </p>
               <h3 className="mt-2 font-serif text-2xl text-[var(--foreground)]">
                 {product.name}
               </h3>
-              <p className="mt-2 text-sm text-[#53627f]">{product.statusLabel}</p>
-              <p className="mt-4 text-sm text-[#6a7897]">
-                Stock: <span className="font-medium text-[var(--foreground)]">{product.stock}</span>
+              <p className="mt-2 text-sm text-[rgba(208,218,255,0.82)]">
+                {product.statusLabel}
+              </p>
+              <p className="mt-4 text-sm text-[rgba(162,180,230,0.76)]">
+                Stock:{" "}
+                <span className="font-medium text-[var(--foreground)]">
+                  {product.stock}
+                </span>
               </p>
               <Link href={`/admin/productos/${product.id}`} className="mt-4 inline-flex">
                 <Button className="px-4 py-2">Abrir ficha</Button>

@@ -3,7 +3,11 @@ import "server-only";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { hasAdminAuthEnv } from "@/lib/env";
+import {
+  getServerEnv,
+  hasAdminLocalAuthEnv,
+  hasAdminSupabaseAuthEnv,
+} from "@/lib/env";
 import {
   ADMIN_SESSION_COOKIE,
   buildAdminSessionToken,
@@ -46,34 +50,54 @@ export async function clearAdminSession() {
 export async function getVerifiedAdminUser() {
   const session = await getAdminSession();
 
-  if (!session || !hasAdminAuthEnv()) {
+  if (!session) {
     return null;
   }
 
-  const supabase = await createSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  if (hasAdminSupabaseAuthEnv()) {
+    const supabase = await createSupabaseServerClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-  if (!user || user.id !== session.userId) {
-    return null;
+    if (!user || user.id !== session.userId) {
+      return null;
+    }
+
+    const { data: adminRole } = await supabase
+      .from("admin_roles")
+      .select("role, is_active")
+      .eq("user_id", user.id)
+      .eq("is_active", true)
+      .maybeSingle();
+
+    if (!adminRole) {
+      return null;
+    }
+
+    return {
+      user,
+      role: adminRole.role as "admin" | "editor",
+    };
   }
 
-  const { data: adminRole } = await supabase
-    .from("admin_roles")
-    .select("role, is_active")
-    .eq("user_id", user.id)
-    .eq("is_active", true)
-    .maybeSingle();
+  if (hasAdminLocalAuthEnv()) {
+    const env = getServerEnv();
 
-  if (!adminRole) {
-    return null;
+    if (session.userId !== "local-admin") {
+      return null;
+    }
+
+    return {
+      user: {
+        id: "local-admin",
+        email: env.ADMIN_EMAIL ?? "admin@narsky.local",
+      },
+      role: session.role,
+    };
   }
 
-  return {
-    user,
-    role: adminRole.role as "admin" | "editor",
-  };
+  return null;
 }
 
 export async function requireAdminSession() {
